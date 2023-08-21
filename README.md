@@ -68,3 +68,29 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+<!-- commands -->
+npm i bootstrap-dark-5 bootstrap react-bootstrap
+
+
+
+const mongoose = require('mongoose');
+const mongoURI = 'mongodb+srv://saurabhyadauvanshi59:goFood123@cluster0.zdgythg.mongodb.net/?retryWrites=true&w=majority'
+const mongoDB = async () => {
+    try {
+        await mongoose.connect(mongoURI, { useNewUrlParser: true });
+        console.log('MongoDB Connected');
+        
+        const fetchedData = mongoose.connection.db.collection('food_items');
+        
+        fetchedData.find().toArray((err, result) => {
+            if (err) throw err;
+            console.log(result);
+        });
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+module.exports = mongoDB;
